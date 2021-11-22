@@ -1,12 +1,14 @@
-import { Fragment } from "react";
 import Footer from "./components/Layout/Footer";
+import useThemeSwitch from "./hooks/use-theme-switch";
 
 function App() {
+  const theme = useThemeSwitch();
+
   return (
-    <Fragment>
+    <div id="theme-switch" data-theme={theme}>
       <main></main>
       <Footer />
-    </Fragment>
+    </div>
   );
 }
 
