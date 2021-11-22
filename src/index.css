@@ -2,10 +2,56 @@ body {
   margin: 0;
 }
 
-#root {
+#theme-switch[data-theme="dark"] {
+  --main-bg-color: hsl(222, 26%, 31%);
+  --toggle-and-key-bg: hsl(223, 31%, 20%);
+  --display-bg: hsl(224, 36%, 15%);
+  --primary-key-bg: hsl(30, 25%, 89%);
+  --primary-key-shadow: hsl(28, 16%, 65%);
+  --secondary-key-bg: hsl(225, 21%, 49%);
+  --secondary-key-shadow: hsl(224, 28%, 35%);
+  --equal-key-and-toggle-bg: hsl(6, 63%, 50%);
+  --equal-key-shadow: hsl(28, 16%, 65%);
+  --text-color: hsl(221, 14%, 31%);
+  --secondary-text-color: hsl(0, 0, 100%);
+  --equal-sign-text-color: hsl(0, 0, 100%);
+}
+
+#theme-switch[data-theme="light"] {
+  --main-bg-color: hsl(0, 0%, 90%);
+  --toggle-and-key-bg: hsl(0, 5%, 81%);
+  --display-bg: hsl(0, 0%, 93%);
+  --primary-key-bg: hsl(45, 7%, 89%);
+  --primary-key-shadow: hsl(35, 11%, 61%);
+  --secondary-key-bg: hsl(185, 42%, 37%);
+  --secondary-key-shadow: hsl(185, 58%, 25%);
+  --equal-key-and-toggle-bg: hsl(25, 98%, 40%);
+  --equal-key-shadow: hsl(25, 99%, 27%);
+  --text-color: hsl(60, 10%, 19%);
+  --secondary-text-color: hsl(0, 0, 100%);
+  --equal-sign-text-color: hsl(0, 0, 100%);
+}
+
+#theme-switch[data-theme="purple"] {
+  --main-bg-color: hsl(268, 75%, 9%);
+  --toggle-and-key-bg: hsl(268, 71%, 12%);
+  --display-bg: hsl(268, 71%, 12%);
+  --primary-key-bg: hsl(268, 47%, 21%);
+  --primary-key-shadow: hsl(290, 70%, 36%);
+  --secondary-key-bg: hsl(281, 89%, 26%);
+  --secondary-key-shadow: hsl(285, 91%, 52%);
+  --equal-key-and-toggle-bg: hsl(176, 100%, 44%);
+  --equal-key-shadow: hsl(177, 92%, 70%);
+  --text-color: hsl(52, 100%, 62%);
+  --secondary-text-color: hsl(0, 0, 100%);
+  --equal-sign-text-color: hsl(198, 20%, 13%);
+}
+
+#theme-switch {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-color: var(--main-bg-color);
 }
 
 main {
