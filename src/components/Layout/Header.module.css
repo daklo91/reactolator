@@ -14,9 +14,13 @@ header h1 {
 .switch-container {
   color: var(--secondary-text-color);
   text-align: right;
-  letter-spacing: 13px;
+}
+
+.switch-container span {
+  letter-spacing: 15px;
   font-size: 12px;
   line-height: 13px;
+  margin-right: -6px;
 }
 
 .switch-container--row {
@@ -34,6 +38,7 @@ header h1 {
 }
 
 .switch-body {
+  cursor: pointer;
   background-color: var(--toggle-and-key-bg);
   height: 16px;
   width: 61px;
@@ -47,5 +52,5 @@ header h1 {
   height: 16px;
   width: 16px;
   border-radius: 100%;
-  float: left;
+  transition: margin 0.3s;
 }
