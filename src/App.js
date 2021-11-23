@@ -1,4 +1,5 @@
 import Footer from "./components/Layout/Footer";
+import Header from "./components/Layout/Header";
 import useThemeSwitch from "./hooks/use-theme-switch";
 
 function App() {
@@ -6,7 +7,10 @@ function App() {
 
   return (
     <div id="theme-switch" data-theme={theme}>
-      <main></main>
+      <div id="calculator-body">
+        <Header />
+        <main></main>
+      </div>
       <Footer />
     </div>
   );
