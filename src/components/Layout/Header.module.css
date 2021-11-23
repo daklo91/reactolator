@@ -5,14 +5,14 @@ header {
 }
 
 header h1 {
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   font-size: 32px;
   line-height: 36px;
   letter-spacing: -0.533333px;
 }
 
 .theme-container {
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   text-align: right;
 }
 
@@ -29,7 +29,7 @@ header h1 {
 }
 
 .theme-container--row span {
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   font-size: 12px;
   line-height: 13px;
   letter-spacing: 1px;
