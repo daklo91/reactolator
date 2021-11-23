@@ -64,3 +64,9 @@ body {
   margin: auto;
   padding: 28px 24px 31px;
 }
+
+@media screen and (min-width: 600px) {
+  #calculator-body {
+    width: 540px;
+  }
+}
