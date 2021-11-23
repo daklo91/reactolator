@@ -17,14 +17,12 @@ const Header = () => {
       ? { marginLeft: "22.5px" }
       : { marginLeft: "45px" };
 
-  console.log(toggleSwitchNotch);
-
   return (
     <header>
       <h1>calc</h1>
-      <div className={classes["switch-container"]}>
-        <span className={classes["switch-numbers"]}>123</span>
-        <div className={classes["switch-container--row"]}>
+      <div className={classes["theme-container"]}>
+        <span>123</span>
+        <div className={classes["theme-container--row"]}>
           <span>THEME</span>
           <div className={classes["switch-body"]} onClick={toggleSwitch}>
             <div
