@@ -4,18 +4,25 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [theme, setTheme] = useState(
-    //if storage empty, run code
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    localStorage.getItem("theme")
+      ? localStorage.getItem("theme")
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
   );
 
   useEffect(() => {
-    //add if ("has theme in storage"). if it has, dont run code.
-    const watchTheme = window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const newTheme = e.matches ? "dark" : "light";
-        setTheme(newTheme);
-      });
+    let watchTheme = "";
+    if (!localStorage.getItem("theme")) {
+      watchTheme = window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          const newTheme = e.matches ? "dark" : "light";
+          setTheme(newTheme);
+        });
+    } else if (watchTheme !== "") {
+      window.removeEventListener("change", watchTheme);
+    }
     return () => {
       window.removeEventListener("change", watchTheme);
     };
@@ -23,7 +30,7 @@ function App() {
 
   const changeTheme = (themeString) => {
     setTheme(themeString);
-    //save to storage
+    localStorage.setItem("theme", themeString);
   };
 
   return (
