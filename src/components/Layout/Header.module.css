@@ -1,0 +1,56 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--text-color);
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -0.533333px;
+}
+
+.theme-container {
+  color: var(--text-color);
+  text-align: right;
+}
+
+.theme-container span {
+  letter-spacing: 15px;
+  font-size: 12px;
+  line-height: 13px;
+  margin-right: -6px;
+}
+
+.theme-container--row {
+  display: flex;
+  align-items: center;
+}
+
+.theme-container--row span {
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  margin-right: 21px;
+}
+
+.switch-body {
+  cursor: pointer;
+  background-color: var(--toggle-and-key-bg);
+  height: 16px;
+  width: 61px;
+  border-radius: 13px;
+  padding: 5px;
+  margin-top: 3px;
+}
+
+.switch-knob {
+  background-color: var(--equal-key-and-toggle-bg);
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  transition: margin 0.3s;
+}

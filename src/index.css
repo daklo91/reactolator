@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
 body {
   margin: 0;
+  font-family: "Spartan", sans-serif;
 }
 
 #theme-switch[data-theme="dark"] {
@@ -12,9 +15,9 @@ body {
   --secondary-key-shadow: hsl(224, 28%, 35%);
   --equal-key-and-toggle-bg: hsl(6, 63%, 50%);
   --equal-key-shadow: hsl(28, 16%, 65%);
-  --text-color: hsl(221, 14%, 31%);
-  --secondary-text-color: hsl(0, 0, 100%);
-  --equal-sign-text-color: hsl(0, 0, 100%);
+  --text-color: #fff;
+  --secondary-text-color: #fff;
+  --equal-sign-text-color: #fff;
 }
 
 #theme-switch[data-theme="light"] {
@@ -28,8 +31,8 @@ body {
   --equal-key-and-toggle-bg: hsl(25, 98%, 40%);
   --equal-key-shadow: hsl(25, 99%, 27%);
   --text-color: hsl(60, 10%, 19%);
-  --secondary-text-color: hsl(0, 0, 100%);
-  --equal-sign-text-color: hsl(0, 0, 100%);
+  --secondary-text-color: #fff;
+  --equal-sign-text-color: #fff;
 }
 
 #theme-switch[data-theme="purple"] {
@@ -43,7 +46,7 @@ body {
   --equal-key-and-toggle-bg: hsl(176, 100%, 44%);
   --equal-key-shadow: hsl(177, 92%, 70%);
   --text-color: hsl(52, 100%, 62%);
-  --secondary-text-color: hsl(0, 0, 100%);
+  --secondary-text-color: #fff;
   --equal-sign-text-color: hsl(198, 20%, 13%);
 }
 
@@ -52,8 +55,18 @@ body {
   flex-direction: column;
   height: 100vh;
   background-color: var(--main-bg-color);
+  transition: background-color 0.3s;
 }
 
-main {
+#calculator-body {
+  width: 375px;
   flex: 1;
+  margin: auto;
+  padding: 28px 24px 31px;
+}
+
+@media screen and (min-width: 600px) {
+  #calculator-body {
+    width: 540px;
+  }
 }
