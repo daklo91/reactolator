@@ -15,7 +15,7 @@ body {
   --secondary-key-shadow: hsl(224, 28%, 35%);
   --equal-key-and-toggle-bg: hsl(6, 63%, 50%);
   --equal-key-shadow: hsl(28, 16%, 65%);
-  --text-color: hsl(221, 14%, 31%);
+  --text-color: #fff;
   --secondary-text-color: #fff;
   --equal-sign-text-color: #fff;
 }
@@ -55,6 +55,7 @@ body {
   flex-direction: column;
   height: 100vh;
   background-color: var(--main-bg-color);
+  transition: background-color 0.3s;
 }
 
 #calculator-body {
