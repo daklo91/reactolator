@@ -1,5 +1,6 @@
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
+import Display from "./components/calculator/display";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
       window.removeEventListener("change", watchTheme);
     }
     return () => {
-      window.removeEventListener("change", watchTheme);
+      if (watchTheme !== "") {
+        window.removeEventListener("change", watchTheme);
+      }
     };
   }, []);
 
@@ -37,7 +40,9 @@ function App() {
     <div id="theme-switch" data-theme={theme}>
       <div id="calculator-body">
         <Header changeTheme={changeTheme} theme={theme} />
-        <main></main>
+        <main>
+          <Display />
+        </main>
       </div>
       <Footer />
     </div>
