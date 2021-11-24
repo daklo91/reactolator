@@ -1,6 +1,7 @@
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
-import Display from "./components/calculator/display";
+import Display from "./components/calculator/Display";
+import Keyboard from "./components/calculator/Keyboard";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Header changeTheme={changeTheme} theme={theme} />
         <main>
           <Display />
+          <Keyboard />
         </main>
       </div>
       <Footer />
