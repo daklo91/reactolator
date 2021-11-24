@@ -14,10 +14,11 @@ body {
   --secondary-key-bg: hsl(225, 21%, 49%);
   --secondary-key-shadow: hsl(224, 28%, 35%);
   --equal-key-and-toggle-bg: hsl(6, 63%, 50%);
-  --equal-key-shadow: hsl(28, 16%, 65%);
+  --equal-key-shadow: hsl(6, 70%, 34%);
   --text-color: #fff;
   --secondary-text-color: #fff;
   --equal-sign-text-color: #fff;
+  --general-button-text-color: hsl(221, 14%, 31%);
 }
 
 #theme-switch[data-theme="light"] {
@@ -33,6 +34,7 @@ body {
   --text-color: hsl(60, 10%, 19%);
   --secondary-text-color: #fff;
   --equal-sign-text-color: #fff;
+  --general-button-text-color: hsl(60, 10%, 19%);
 }
 
 #theme-switch[data-theme="purple"] {
@@ -48,6 +50,7 @@ body {
   --text-color: hsl(52, 100%, 62%);
   --secondary-text-color: #fff;
   --equal-sign-text-color: hsl(198, 20%, 13%);
+  --general-button-text-color: hsl(52, 100%, 62%);
 }
 
 #theme-switch {
