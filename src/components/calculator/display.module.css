@@ -1,0 +1,19 @@
+.display {
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -0.533333px;
+  color: var(--text-color);
+  text-align: right;
+  padding: 26px 24px 26px 0px;
+  background-color: var(--display-bg);
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .display {
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: -0.8px;
+    padding: 38px 32px 36px 0px;
+  }
+}
