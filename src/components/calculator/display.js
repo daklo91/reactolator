@@ -1,6 +1,6 @@
-import classes from "./display.module.css";
+import classes from "./Display.module.css";
 
-const display = () => {
+const Display = () => {
   return (
     <div className={classes.display}>
       {/* placeholder text will recieve props */}
@@ -9,4 +9,4 @@ const display = () => {
   );
 };
 
-export default display;
+export default Display;
