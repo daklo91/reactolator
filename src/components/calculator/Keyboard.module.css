@@ -58,24 +58,11 @@
 }
 
 .keyboard button:active {
-  /* transform: translateY(4px); */
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 
-/* .keyboard button:focus { */
-/* transform: translateY(4px);  */
-/* transform: scale(0.97);
-} */
-
-/* .active {
-  transform: translateY(4px);
-  transform: scale(0.97);
-  background-color: red;
-} */
-
-.keyboard button .myStyle {
-  transform: scale(0.97);
-  background-color: red;
+.active {
+  transform: scale(0.95);
 }
 
 @media screen and (min-width: 600px) {
