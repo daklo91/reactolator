@@ -19,6 +19,12 @@
 
 .keyboard button:nth-child(4):hover {
   background-color: var(--secondary-key-hover);
+  box-shadow: inset 0px -4px 0px var(--secondary-key-shadow-hover);
+}
+
+.keyboard button:nth-child(4):active {
+  background-color: var(--secondary-key-hover);
+  box-shadow: inset 0px 0px 0px var(--secondary-key-shadow-hover);
 }
 
 .keyboard button:nth-last-child(2) {
@@ -34,6 +40,11 @@
 
 .keyboard button:nth-last-child(2):hover {
   background-color: var(--secondary-key-hover);
+  box-shadow: inset 0px -4px 0px var(--secondary-key-shadow-hover);
+}
+
+.keyboard button:nth-last-child(2):active {
+  box-shadow: inset 0px 0px 0px var(--secondary-key-shadow);
 }
 
 .keyboard button:nth-last-child(1) {
@@ -49,6 +60,11 @@
 
 .keyboard button:nth-last-child(1):hover {
   background-color: var(--equal-key-and-toggle-hover);
+  box-shadow: inset 0px -4px 0px var(--equal-key-shadow-hover);
+}
+
+.keyboard button:nth-last-child(1):active {
+  box-shadow: inset 0px 0px 0px var(--equal-key-shadow-hover);
 }
 
 .keyboard button {
@@ -72,6 +88,7 @@
 
 .keyboard button:hover {
   background-color: var(--primary-key-hover);
+  box-shadow: inset 0px -4px 0px var(--primary-key-shadow-hover);
 }
 
 .keyboard button:active {
