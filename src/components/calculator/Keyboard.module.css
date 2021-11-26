@@ -67,7 +67,7 @@
   width: 60px;
   height: 64px;
   outline: none;
-  transition: all 0.07s ease;
+  transition: all 0.06s ease;
 }
 
 .keyboard button:hover {
@@ -82,7 +82,10 @@
 }
 
 .active {
-  transform: scale(0.95);
+  transform: translate(0px, 4px) !important;
+  box-shadow: inset 0px 0px 0px var(--primary-key-shadow) !important;
+  height: 60px !important;
+  padding: 12px 10px 12px 10px !important;
 }
 
 @media screen and (min-width: 600px) {
