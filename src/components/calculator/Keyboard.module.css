@@ -67,6 +67,7 @@
   width: 60px;
   height: 64px;
   outline: none;
+  transition: all 0.07s ease;
 }
 
 .keyboard button:hover {
@@ -74,7 +75,10 @@
 }
 
 .keyboard button:active {
-  transform: scale(0.95);
+  transform: translate(0px, 4px);
+  box-shadow: inset 0px 0px 0px var(--primary-key-shadow);
+  height: 60px;
+  padding: 12px 10px 12px 10px;
 }
 
 .active {
