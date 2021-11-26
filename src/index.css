@@ -11,9 +11,12 @@ body {
   --display-bg: hsl(224, 36%, 15%);
   --primary-key-bg: hsl(30, 25%, 89%);
   --primary-key-shadow: hsl(28, 16%, 65%);
+  --primary-key-hover: #fffffe;
   --secondary-key-bg: hsl(225, 21%, 49%);
   --secondary-key-shadow: hsl(224, 28%, 35%);
+  --secondary-key-hover: #a2b2e1;
   --equal-key-and-toggle-bg: hsl(6, 63%, 50%);
+  --equal-key-and-toggle-hover: #f96b5b;
   --equal-key-shadow: hsl(6, 70%, 34%);
   --text-color: #fff;
   --secondary-text-color: #fff;
@@ -27,9 +30,12 @@ body {
   --display-bg: hsl(0, 0%, 93%);
   --primary-key-bg: hsl(45, 7%, 89%);
   --primary-key-shadow: hsl(35, 11%, 61%);
+  --primary-key-hover: #fff;
   --secondary-key-bg: hsl(185, 42%, 37%);
   --secondary-key-shadow: hsl(185, 58%, 25%);
+  --secondary-key-hover: #62b5bc;
   --equal-key-and-toggle-bg: hsl(25, 98%, 40%);
+  --equal-key-and-toggle-hover: #ff8a38;
   --equal-key-shadow: hsl(25, 99%, 27%);
   --text-color: hsl(60, 10%, 19%);
   --secondary-text-color: #fff;
@@ -43,9 +49,12 @@ body {
   --display-bg: hsl(268, 71%, 12%);
   --primary-key-bg: hsl(268, 47%, 21%);
   --primary-key-shadow: hsl(290, 70%, 36%);
+  --primary-key-hover: #6c34ac;
   --secondary-key-bg: hsl(281, 89%, 26%);
   --secondary-key-shadow: hsl(285, 91%, 52%);
+  --secondary-key-hover: #8631af;
   --equal-key-and-toggle-bg: hsl(176, 100%, 44%);
+  --equal-key-and-toggle-hover: #93fff8;
   --equal-key-shadow: hsl(177, 92%, 70%);
   --text-color: hsl(52, 100%, 62%);
   --secondary-text-color: #fff;
