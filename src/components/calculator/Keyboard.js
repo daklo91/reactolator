@@ -24,6 +24,7 @@ const symbolArray = [
 
 const Keyboard = () => {
   const [keyPress, setKeyPress] = useState("");
+  //as of now, the state only updates when the clickUP happens, not at clickDown. When the display is up, experiment with what feels the best.
   const getSymbol = (symbol) => {
     console.log(symbol);
   };
@@ -35,8 +36,13 @@ const Keyboard = () => {
       document.removeEventListener("keydown", keyPressed);
       document.removeEventListener("keyup", keyReleased);
     };
-    //! this either have to be disabled or useCallback or memo must be used on keyPressed before passing it as a dependency
   }, []);
+
+  useEffect(() => {
+    if (keyPress) {
+      console.log(keyPress);
+    }
+  }, [keyPress]);
 
   const keyPressed = (e) => {
     if (e.key === "1") {
@@ -99,7 +105,6 @@ const Keyboard = () => {
     if (e.key === "Enter") {
       setKeyPress("=");
     }
-    getSymbol(e.key);
   };
 
   const keyReleased = () => {
