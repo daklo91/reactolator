@@ -38,8 +38,8 @@ function App() {
     localStorage.setItem("theme", themeString);
   };
 
-  const getSymbol = (symbol) => {
-    setSymbol(symbol);
+  const getSymbol = (recievedSymbol) => {
+    setSymbol(recievedSymbol);
   };
 
   return (
