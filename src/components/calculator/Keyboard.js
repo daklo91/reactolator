@@ -22,11 +22,11 @@ const symbolArray = [
   "=",
 ];
 
-const Keyboard = () => {
+const Keyboard = (props) => {
   const [keyPress, setKeyPress] = useState("");
-  //as of now, the state only updates when the clickUP happens, not at clickDown. When the display is up, experiment with what feels the best.
-  const getSymbol = (symbol) => {
-    console.log(symbol);
+  const getSymbol = props.getSymbol;
+  const getSymbolHandler = (symbol) => {
+    getSymbol(symbol);
   };
 
   useEffect(() => {
@@ -40,9 +40,9 @@ const Keyboard = () => {
 
   useEffect(() => {
     if (keyPress) {
-      console.log(keyPress);
+      getSymbol(keyPress);
     }
-  }, [keyPress]);
+  }, [keyPress, getSymbol]);
 
   const keyPressed = (e) => {
     if (e.key === "1") {
@@ -119,7 +119,7 @@ const Keyboard = () => {
             className={keyPress === symbol ? classes.active : ""}
             id={symbol}
             key={symbol}
-            onClick={() => getSymbol(symbol)}
+            onClick={() => getSymbolHandler(symbol)}
           >
             {symbol}
           </button>
