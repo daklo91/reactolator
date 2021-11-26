@@ -5,6 +5,7 @@ import Keyboard from "./components/calculator/Keyboard";
 import { useState, useEffect } from "react";
 
 function App() {
+  const [symbol, setSymbol] = useState("");
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -37,13 +38,17 @@ function App() {
     localStorage.setItem("theme", themeString);
   };
 
+  const getSymbol = (symbol) => {
+    setSymbol(symbol);
+  };
+
   return (
     <div id="theme-switch" data-theme={theme}>
       <div id="calculator-body">
         <Header changeTheme={changeTheme} theme={theme} />
         <main>
-          <Display />
-          <Keyboard />
+          <Display symbol={symbol} />
+          <Keyboard getSymbol={getSymbol} />
         </main>
       </div>
       <Footer />
