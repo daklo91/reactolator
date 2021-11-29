@@ -82,19 +82,19 @@ const Keyboard = (props) => {
       setKeyPress(".");
     }
     if (e.key === "/") {
-      setKeyPress("/");
+      setKeyPress(" / ");
     }
     if (e.key === "x") {
-      setKeyPress("x");
+      setKeyPress(" x ");
     }
     if (e.key === "*") {
-      setKeyPress("x");
+      setKeyPress(" x ");
     }
     if (e.key === "-") {
-      setKeyPress("-");
+      setKeyPress(" - ");
     }
     if (e.key === "+") {
-      setKeyPress("+");
+      setKeyPress(" + ");
     }
     if (e.key === "Backspace") {
       setKeyPress("DEL");

@@ -2,7 +2,7 @@ import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import Display from "./components/calculator/Display";
 import Keyboard from "./components/calculator/Keyboard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function App() {
   const [symbol, setSymbol] = useState("");
@@ -38,8 +38,15 @@ function App() {
     localStorage.setItem("theme", themeString);
   };
 
-  const getSymbol = (recievedSymbol) => {
-    setSymbol(recievedSymbol);
+  const getSymbol = useCallback((recievedSymbol) => {
+    if (symbol.substr(-1) === "+") {
+      return;
+    }
+    setSymbol((prevState) => prevState.concat(recievedSymbol));
+  }, []);
+
+  const cleanSymbol = () => {
+    setSymbol("");
   };
 
   return (
@@ -47,7 +54,7 @@ function App() {
       <div id="calculator-body">
         <Header changeTheme={changeTheme} theme={theme} />
         <main>
-          <Display symbol={symbol} />
+          <Display symbol={symbol} cleanSymbol={cleanSymbol} />
           <Keyboard getSymbol={getSymbol} />
         </main>
       </div>
