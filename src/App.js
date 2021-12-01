@@ -2,10 +2,13 @@ import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import Display from "./components/calculator/Display";
 import Keyboard from "./components/calculator/Keyboard";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [symbol, setSymbol] = useState("");
+  const [activeNumber, setActiveNumber] = useState("0");
+  const [savedNumber, setSavedNumber] = useState("");
+  const [resultNumber, setResultNumber] = useState("");
+  const [operatorSymbol, setOperatorSymbol] = useState("");
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -38,15 +41,74 @@ function App() {
     localStorage.setItem("theme", themeString);
   };
 
-  const getSymbol = useCallback((recievedSymbol) => {
-    if (symbol.substr(-1) === "+") {
-      return;
-    }
-    setSymbol((prevState) => prevState.concat(recievedSymbol));
-  }, []);
+  const getSymbol = (recievedSymbol) => {
+    calculate(recievedSymbol);
+  };
 
-  const cleanSymbol = () => {
-    setSymbol("");
+  const calculate = (recievedSymbol) => {
+    if (recievedSymbol.type === "number") {
+      setActiveNumber((prevState) => {
+        let newNumber = prevState + recievedSymbol.name;
+        if (newNumber.charAt(0) === "0" && !activeNumber.includes(".")) {
+          newNumber = newNumber.substring(1);
+        }
+        return newNumber;
+      });
+    }
+    if (recievedSymbol.name === ".") {
+      if (!activeNumber.includes(".")) {
+        setActiveNumber((prevState) => {
+          const newNumber = prevState + recievedSymbol.name;
+          return newNumber;
+        });
+      }
+    }
+    if (recievedSymbol.type === "operator" && !operatorSymbol) {
+      setOperatorSymbol(recievedSymbol.name);
+      setActiveNumber("");
+      setSavedNumber(activeNumber);
+    }
+    if (recievedSymbol.type === "operator" && operatorSymbol) {
+      setOperatorSymbol(recievedSymbol.name);
+    }
+    if (recievedSymbol.name === "DEL") {
+      setActiveNumber(Math.floor(activeNumber / 10));
+    }
+    if (recievedSymbol.name === "RESET") {
+      setOperatorSymbol("");
+      setActiveNumber("0");
+      setSavedNumber("");
+      setResultNumber("");
+    }
+    // if (recievedSymbol.name === "=" && resultNumber) {
+    //   setSavedNumber(resultNumber);
+    //   if (operatorSymbol === "+") {
+    //     setResultNumber(+savedNumber + +activeNumber);
+    //   }
+    //   if (operatorSymbol === "-") {
+    //     setResultNumber(+savedNumber - +activeNumber);
+    //   }
+    //   if (operatorSymbol === "x") {
+    //     setResultNumber(+savedNumber * +activeNumber);
+    //   }
+    //   if (operatorSymbol === "/") {
+    //     setResultNumber(+savedNumber / +activeNumber);
+    //   }
+    // }
+    if (recievedSymbol.name === "=") {
+      if (operatorSymbol === "+") {
+        setResultNumber(+savedNumber + +activeNumber);
+      }
+      if (operatorSymbol === "-") {
+        setResultNumber(+savedNumber - +activeNumber);
+      }
+      if (operatorSymbol === "x") {
+        setResultNumber(+savedNumber * +activeNumber);
+      }
+      if (operatorSymbol === "/") {
+        setResultNumber(+savedNumber / +activeNumber);
+      }
+    }
   };
 
   return (
@@ -54,7 +116,12 @@ function App() {
       <div id="calculator-body">
         <Header changeTheme={changeTheme} theme={theme} />
         <main>
-          <Display symbol={symbol} cleanSymbol={cleanSymbol} />
+          <Display
+            activeNumber={activeNumber}
+            operatorSymbol={operatorSymbol}
+            savedNumber={savedNumber}
+            resultNumber={resultNumber}
+          />
           <Keyboard getSymbol={getSymbol} />
         </main>
       </div>

@@ -14,7 +14,7 @@ const symbols = [
   { name: "2", key: ["2"], type: "number" },
   { name: "3", key: ["3"], type: "number" },
   { name: "-", key: ["-"], type: "operator" },
-  { name: ".", key: [".", ","], type: "number" },
+  { name: ".", key: [".", ","], type: "other" },
   { name: "0", key: ["0"], type: "number" },
   { name: "/", key: ["/"], type: "operator" },
   { name: "x", key: ["x", "*"], type: "operator" },
