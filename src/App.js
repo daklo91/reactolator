@@ -92,7 +92,7 @@ function App() {
     //     setResultNumber(+savedNumber * +activeNumber);
     //   }
     //   if (operatorSymbol === "/") {
-    //     setResultNumber(+savedNumber / +activeNumber);
+    //     setR esultNumber(+savedNumber / +activeNumber);
     //   }
     // }
     if (recievedSymbol.name === "=") {
