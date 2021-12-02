@@ -70,7 +70,7 @@ function App() {
     //Add operator, set activeNumber to savedNumber
     if (recievedSymbol.type === "operator" && !operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
-      setActiveNumber("");
+      setActiveNumber("0");
       setSavedNumber(activeNumber);
     }
     //Switch the operator if an operator is already set
@@ -80,6 +80,7 @@ function App() {
     //Remove a symbol from activeNumber. Similar to Windows 10 Calculator
     if (recievedSymbol.name === "DEL") {
       setActiveNumber(Math.floor(activeNumber / 10).toString());
+      setResultNumber("");
     }
     if (recievedSymbol.name === "RESET") {
       setOperatorSymbol("");
