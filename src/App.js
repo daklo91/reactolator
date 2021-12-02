@@ -72,7 +72,7 @@ function App() {
       setOperatorSymbol(recievedSymbol.name);
     }
     if (recievedSymbol.name === "DEL") {
-      setActiveNumber(Math.floor(activeNumber / 10));
+      setActiveNumber(Math.floor(activeNumber / 10).toString());
     }
     if (recievedSymbol.name === "RESET") {
       setOperatorSymbol("");
@@ -80,22 +80,22 @@ function App() {
       setSavedNumber("");
       setResultNumber("");
     }
-    // if (recievedSymbol.name === "=" && resultNumber) {
-    //   setSavedNumber(resultNumber);
-    //   if (operatorSymbol === "+") {
-    //     setResultNumber(+savedNumber + +activeNumber);
-    //   }
-    //   if (operatorSymbol === "-") {
-    //     setResultNumber(+savedNumber - +activeNumber);
-    //   }
-    //   if (operatorSymbol === "x") {
-    //     setResultNumber(+savedNumber * +activeNumber);
-    //   }
-    //   if (operatorSymbol === "/") {
-    //     setR esultNumber(+savedNumber / +activeNumber);
-    //   }
-    // }
-    if (recievedSymbol.name === "=") {
+    if (resultNumber && recievedSymbol.name === "=") {
+      setSavedNumber(resultNumber);
+      if (operatorSymbol === "+") {
+        setResultNumber(+resultNumber + +activeNumber);
+      }
+      if (operatorSymbol === "-") {
+        setResultNumber(+resultNumber - +activeNumber);
+      }
+      if (operatorSymbol === "x") {
+        setResultNumber(+resultNumber * +activeNumber);
+      }
+      if (operatorSymbol === "/") {
+        setResultNumber(+resultNumber / +activeNumber);
+      }
+    }
+    if (recievedSymbol.name === "=" && !resultNumber) {
       if (operatorSymbol === "+") {
         setResultNumber(+savedNumber + +activeNumber);
       }
