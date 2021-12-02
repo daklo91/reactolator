@@ -2,8 +2,13 @@
   font-size: 14px;
   text-align: center;
   margin-bottom: 20px;
+  color: var(--text-color);
 }
 
 .footer a {
-  color: hsl(228, 45%, 44%);
+  color: var(--equal-key-and-toggle-bg);
+}
+
+.footer a:hover {
+  color: var(--equal-key-and-toggle-hover);
 }
