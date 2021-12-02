@@ -9,11 +9,16 @@ const Display = (props) => {
   return (
     <Fragment>
       <div className={classes.display}>
+        <span className={classes["text--calculation"]}>
+          {props.savedNumber} {props.operatorSymbol}{" "}
+          {props.resultNumber ? props.activeNumber : null}{" "}
+          {props.resultNumber ? "=" : null}
+          &#8205;
+        </span>
         <span className={classes["text--result"]}>
-          {props.savedNumber} {props.operatorSymbol} {props.activeNumber}{" "}
           {props.resultNumber || props.resultNumber === 0
-            ? "= " + roundToTwo(props.resultNumber)
-            : null}
+            ? roundToTwo(props.resultNumber)
+            : props.activeNumber}
         </span>
       </div>
     </Fragment>
