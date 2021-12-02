@@ -9,6 +9,7 @@ function App() {
   const [savedNumber, setSavedNumber] = useState("");
   const [resultNumber, setResultNumber] = useState("");
   const [operatorSymbol, setOperatorSymbol] = useState("");
+  const [delIsRecieved, setdelIsRecieved] = useState(false);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -79,7 +80,12 @@ function App() {
     }
     //Remove a symbol from activeNumber. Similar to Windows 10 Calculator
     if (recievedSymbol.name === "DEL") {
-      setActiveNumber(Math.floor(activeNumber / 10).toString());
+      if (delIsRecieved) {
+        setActiveNumber(Math.floor(activeNumber / 10).toString());
+      }
+      if (!delIsRecieved) {
+        setdelIsRecieved(true);
+      }
       setResultNumber("");
     }
     if (recievedSymbol.name === "RESET") {
@@ -90,6 +96,7 @@ function App() {
     }
     //Allows the user to repeatedly smash the = button and get the result from the last resultNumber and current activeNumber. Similar to Windows 10 Calculator
     if (resultNumber && recievedSymbol.name === "=") {
+      setdelIsRecieved(false);
       setSavedNumber(resultNumber);
       if (operatorSymbol === "+") {
         setResultNumber(+resultNumber + +activeNumber);
@@ -106,6 +113,7 @@ function App() {
     }
     //Do the calculation if there is no resultNumber
     if (recievedSymbol.name === "=" && !resultNumber) {
+      setdelIsRecieved(false);
       if (operatorSymbol === "+") {
         setResultNumber(+savedNumber + +activeNumber);
       }
