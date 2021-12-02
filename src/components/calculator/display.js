@@ -11,7 +11,9 @@ const Display = (props) => {
       <div className={classes.display}>
         <span className={classes["text--calculation"]}>
           {props.savedNumber} {props.operatorSymbol}{" "}
-          {props.resultNumber ? props.activeNumber : null}{" "}
+          {props.resultNumber || props.resultNumber === 0
+            ? props.activeNumber
+            : null}{" "}
           {props.resultNumber ? "=" : null}
           &#8205;
         </span>
