@@ -46,6 +46,9 @@ function App() {
   };
 
   const calculate = (recievedSymbol) => {
+    //* Function works by adding numbers to activeNumber, then when an operator is added to operatorSymbol, the activeNumber will go to savedNumber.
+    //* When both an activeNumber and savedNumber is set. The = symbol will convert the strings to integers and calculate them togheter depending on the operator.
+    //Add number to activeNumber && only allow one 0 at the start of the string
     if (recievedSymbol.type === "number") {
       setActiveNumber((prevState) => {
         let newNumber = prevState + recievedSymbol.name;
@@ -55,6 +58,7 @@ function App() {
         return newNumber;
       });
     }
+    //Only allow one "." symbol
     if (recievedSymbol.name === ".") {
       if (!activeNumber.includes(".")) {
         setActiveNumber((prevState) => {
@@ -63,14 +67,17 @@ function App() {
         });
       }
     }
+    //Add operator, set activeNumber to savedNumber
     if (recievedSymbol.type === "operator" && !operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
       setActiveNumber("");
       setSavedNumber(activeNumber);
     }
+    //Switch the operator if an operator is already set
     if (recievedSymbol.type === "operator" && operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
     }
+    //Remove a symbol from activeNumber. Similar to Windows 10 Calculator
     if (recievedSymbol.name === "DEL") {
       setActiveNumber(Math.floor(activeNumber / 10).toString());
     }
@@ -80,6 +87,7 @@ function App() {
       setSavedNumber("");
       setResultNumber("");
     }
+    //Allows the user to repeatedly smash the = button and get the result from the last resultNumber and current activeNumber. Similar to Windows 10 Calculator
     if (resultNumber && recievedSymbol.name === "=") {
       setSavedNumber(resultNumber);
       if (operatorSymbol === "+") {
@@ -95,6 +103,7 @@ function App() {
         setResultNumber(+resultNumber / +activeNumber);
       }
     }
+    //Do the calculation if there is no resultNumber
     if (recievedSymbol.name === "=" && !resultNumber) {
       if (operatorSymbol === "+") {
         setResultNumber(+savedNumber + +activeNumber);
