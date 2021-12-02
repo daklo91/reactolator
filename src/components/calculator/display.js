@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import classes from "./Display.module.css";
+import classes from "./display.module.css";
 
 const roundToTwo = (num) => {
   return +(Math.round(num + "e+2") + "e-2");

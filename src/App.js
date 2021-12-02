@@ -1,6 +1,6 @@
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
-import Display from "./components/calculator/Display";
+import Display from "./components/calculator/display";
 import Keyboard from "./components/calculator/Keyboard";
 import { useState, useEffect } from "react";
 
