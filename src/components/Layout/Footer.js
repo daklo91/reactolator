@@ -6,7 +6,7 @@ const Footer = () => {
       <div className={classes.footer}>
         Challenge by{" "}
         <a
-          href="https://www.frontendmentor.io?ref=challenge"
+          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29"
           target="_blank"
           rel="noreferrer"
         >

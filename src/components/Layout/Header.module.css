@@ -54,3 +54,7 @@ header h1 {
   border-radius: 100%;
   transition: margin 0.3s;
 }
+
+.switch-body:hover .switch-knob {
+  background-color: var(--equal-key-and-toggle-hover);
+}
