@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import classes from "./display.module.css";
 
-const roundToTwo = (num) => {
-  return +(Math.round(num + "e+2") + "e-2");
-};
-
 const Display = (props) => {
+  const removeTrailingZeros = () => {
+    const string = props.resultNumber.toFixed(4).toString();
+    return +string;
+  };
+
   return (
     <Fragment>
       <div className={classes.display}>
@@ -19,7 +20,7 @@ const Display = (props) => {
         </span>
         <span className={classes["text--result"]}>
           {props.resultNumber || props.resultNumber === 0
-            ? roundToTwo(props.resultNumber)
+            ? removeTrailingZeros()
             : props.activeNumber}
         </span>
       </div>
