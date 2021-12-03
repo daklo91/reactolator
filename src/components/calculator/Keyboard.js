@@ -25,9 +25,6 @@ const symbols = [
 const Keyboard = (props) => {
   const [keyPress, setKeyPress] = useState("");
   const [keyIsHeld, setkeyIsHeld] = useState(false);
-  // const getSymbolHandler = (symbol) => {
-  //   props.getSymbol(symbol);
-  // };
 
   const keyPressed = (e) => {
     if (!keyIsHeld) {
