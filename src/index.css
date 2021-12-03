@@ -91,3 +91,12 @@ body {
     width: 540px;
   }
 }
+
+@media screen and (max-width: 374px) {
+  #calculator-body {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+    width: 100%;
+  }
+}

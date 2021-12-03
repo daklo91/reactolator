@@ -58,3 +58,25 @@ header h1 {
 .switch-body:hover .switch-knob {
   background-color: var(--equal-key-and-toggle-hover);
 }
+
+@media screen and (max-width: 374px) {
+  header {
+    padding: 0 5px 0 5px;
+  }
+}
+
+@media screen and (max-width: 319px) {
+  header {
+    padding: 0 5px 0 5px;
+  }
+
+  .theme-container--row span {
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 240px) {
+  .theme-container--row span {
+    visibility: hidden;
+  }
+}
