@@ -24,22 +24,28 @@ const symbols = [
 
 const Keyboard = (props) => {
   const [keyPress, setKeyPress] = useState("");
-  const getSymbolHandler = (symbol) => {
-    props.getSymbol(symbol);
-  };
+  const [keyIsHeld, setkeyIsHeld] = useState(false);
+  // const getSymbolHandler = (symbol) => {
+  //   props.getSymbol(symbol);
+  // };
 
   const keyPressed = (e) => {
-    const foundSymbol = symbols.find(
-      (symbol) => e.key === symbol.key.find((key) => e.key === key)
-    );
-    if (foundSymbol) {
-      setKeyPress(foundSymbol.name);
-      getSymbolHandler(foundSymbol);
+    if (!keyIsHeld) {
+      const foundSymbol = symbols.find(
+        (symbol) => e.key === symbol.key.find((key) => e.key === key)
+      );
+      if (foundSymbol) {
+        setKeyPress(foundSymbol.name);
+        props.getSymbol(foundSymbol);
+      }
+      setkeyIsHeld(true);
     }
+    if ("activeElement" in document) document.activeElement.blur();
   };
 
   const keyReleased = () => {
     setKeyPress("");
+    setkeyIsHeld(false);
   };
 
   useEffect(() => {
@@ -59,7 +65,7 @@ const Keyboard = (props) => {
             className={keyPress === symbol.name ? classes.active : ""}
             id={symbol.name}
             key={symbol.name}
-            onClick={() => getSymbolHandler(symbol)}
+            onClick={() => props.getSymbol(symbol)}
           >
             {symbol.name}
           </button>
