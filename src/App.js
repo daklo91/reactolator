@@ -51,6 +51,10 @@ function App() {
     //* When both an activeNumber and savedNumber is set. The = symbol will convert the strings to integers and calculate them togheter depending on the operator.
     //Add number to activeNumber && only allow one 0 at the start of the string
     if (recievedSymbol.type === "number") {
+      if (resultNumber) {
+        setResultNumber("");
+        setActiveNumber("");
+      }
       setActiveNumber((prevState) => {
         let newNumber = prevState + recievedSymbol.name;
         if (newNumber.charAt(0) === "0" && !activeNumber.includes(".")) {
