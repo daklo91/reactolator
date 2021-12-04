@@ -11,12 +11,11 @@ const Display = (props) => {
     <Fragment>
       <div className={classes.display}>
         <span className={classes["text--calculation"]}>
-          {props.savedNumber} {props.operatorSymbol}{" "}
+          {props.resultNumber ? "=" : null}{" "}
           {props.resultNumber || props.resultNumber === 0
             ? props.activeNumber
             : null}{" "}
-          {props.resultNumber ? "=" : null}
-          &#8205;
+          {props.operatorSymbol} {props.savedNumber} &#8205;
         </span>
         <span className={classes["text--result"]}>
           {props.resultNumber || props.resultNumber === 0

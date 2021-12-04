@@ -5,6 +5,11 @@
   padding: 26px 24px 26px 0px;
   background-color: var(--display-bg);
   border-radius: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  direction: rtl;
+  white-space: nowrap;
 }
 
 .text--result {
@@ -46,5 +51,11 @@
 @media screen and (max-width: 374px) {
   .display {
     border-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 240px) {
+  .display {
+    padding-right: 3px;
   }
 }
