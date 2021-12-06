@@ -47,9 +47,7 @@ function App() {
   };
 
   const calculate = (recievedSymbol) => {
-    //* Function works by adding numbers to activeNumber, then when an operator is added to operatorSymbol, the activeNumber will go to savedNumber.
-    //* When both an activeNumber and savedNumber is set. The = symbol will convert the strings to integers and calculate them togheter depending on the operator.
-    //Add number to activeNumber && only allow one 0 at the start of the string
+    //*Add number to activeNumber
     if (recievedSymbol.type === "number") {
       if (resultNumber) {
         setResultNumber("");
@@ -57,6 +55,7 @@ function App() {
       }
       setActiveNumber((prevState) => {
         let newNumber = prevState + recievedSymbol.name;
+        //only allow one 0 before a decimal
         if (newNumber.charAt(0) === "0" && !activeNumber.includes(".")) {
           newNumber = newNumber.substring(1);
         }
@@ -72,7 +71,7 @@ function App() {
         });
       }
     }
-    //Add operator, set activeNumber to savedNumber
+    //*Add operator, set activeNumber to savedNumber
     if (recievedSymbol.type === "operator" && !operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
       setActiveNumber("0");
@@ -81,8 +80,13 @@ function App() {
     //Switch the operator if an operator is already set
     if (recievedSymbol.type === "operator" && operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
+      if (resultNumber) {
+        setSavedNumber(resultNumber);
+        setActiveNumber("0");
+      }
+      setResultNumber("");
     }
-    //Remove a symbol from activeNumber. Similar to Windows 10 Calculator
+    //*Remove a symbol from activeNumber
     if (recievedSymbol.name === "DEL") {
       if (delIsRecieved) {
         setActiveNumber(Math.floor(activeNumber / 10).toString());
@@ -98,7 +102,7 @@ function App() {
       setSavedNumber("");
       setResultNumber("");
     }
-    //Allows the user to repeatedly smash the = button and get the result from the last resultNumber and current activeNumber. Similar to Windows 10 Calculator
+    //Allows the user to repeatedly smash the = button and get the result from the last resultNumber and current activeNumber
     if (resultNumber && recievedSymbol.name === "=") {
       setdelIsRecieved(false);
       setSavedNumber(resultNumber);
