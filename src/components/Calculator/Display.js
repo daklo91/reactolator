@@ -1,7 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import classes from "./Display.module.css";
 
 const Display = (props) => {
+  const display = useRef();
+  useEffect(() => {
+    display.current.scrollLeft = display.current.scrollWidth;
+  });
+
   const removeTrailingZeros = () => {
     const string = props.resultNumber.toFixed(4).toString();
     return +string;
@@ -9,13 +14,13 @@ const Display = (props) => {
 
   return (
     <Fragment>
-      <div className={classes.display}>
+      <div ref={display} className={classes.display}>
         <span className={classes["text--calculation"]}>
-          {props.resultNumber ? "=" : null}{" "}
+          {props.savedNumber} {props.operatorSymbol}{" "}
           {props.resultNumber || props.resultNumber === 0
             ? props.activeNumber
             : null}{" "}
-          {props.operatorSymbol} {props.savedNumber} &#8205;
+          {props.resultNumber ? "=" : null} &#8205;
         </span>
         <span className={classes["text--result"]}>
           {props.resultNumber || props.resultNumber === 0
