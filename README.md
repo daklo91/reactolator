@@ -4,11 +4,19 @@ A calculator app made with React.
 
 Table of contents
 
-1. About
-2. Hidden features
-3. Hurdles during development
-4. Development Choices
-5. Other
+1. [About](#about)
+2. [Hidden features](#hidden-features)
+    - [Keyboard Functionality](#keyboard-functionality)
+    - [Change theme automatically if the user changes the device theme](#change-theme-automatically-if-the-user-changes-the-device-theme)
+3. [Hurdles during development](#hurdles-during-development)
+    - [Enter keys writes focused elements](#enter-keys-writes-focused-elements)
+    - [Becoming overwhelmed](#becoming-overwhelmed)
+4. [Development Choices](#development-choices)
+    - [Animated Buttons](#animated-buttons)
+    - [Theme Switch](#theme-switch)
+    - [An extra line of text on Display](#an-extra-line-of-text-on-display)
+    - [Dealing with the Floating-Point Arithmetic](#dealing-with-the-floating-point-arithmetic)
+5. [Other](#other)
 
 ## About
 
