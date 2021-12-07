@@ -1,14 +1,23 @@
 # Reactolator
 
-A calculator app made with React.
+A calculator app made with React.  
+Live version on Netlify: https://daklo-reactolator.netlify.app/
 
 Table of contents
 
-1. About
-2. Hidden features
-3. Hurdles during development
-4. Development Choices
-5. Other
+1. [About](#about)
+2. [Hidden features](#hidden-features)
+    - [Keyboard Functionality](#keyboard-functionality)
+    - [Change theme automatically if the user changes the device theme](#change-theme-automatically-if-the-user-changes-the-device-theme)
+3. [Hurdles during development](#hurdles-during-development)
+    - [Enter keys writes focused elements](#enter-keys-writes-focused-elements)
+    - [Becoming overwhelmed](#becoming-overwhelmed)
+4. [Development Choices](#development-choices)
+    - [Animated Buttons](#animated-buttons)
+    - [Theme Switch](#theme-switch)
+    - [An extra line of text on Display](#an-extra-line-of-text-on-display)
+    - [Dealing with the Floating-Point Arithmetic](#dealing-with-the-floating-point-arithmetic)
+5. [Other](#other)
 
 ## About
 
@@ -107,12 +116,12 @@ I decided to go for the latter because that will make it easier for mobile users
 
 I decided to make the calculations be shown in an extra line above the result number. This is inspired by the official Windows 10 Calculator.  
 The reason for why I did this is to make bigger calculations easier to see.
-![Improved Display](/screenshots/calculator-display.png?raw=true "My improved display compared to the original")
+![Improved Display](/screenshots/calculator-display.png?raw=true "My improved display compared to the original")  
 <sub>Left is the original design. Middle is Windows 10's official calculator. Right is my tweak to the design.</sub>
 
 ### Dealing with the Floating-Point Arithmetic
 
-This is something that everyone should know about when dealing with numbers in JavaScript. After barely reading [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html), I went for my favorite [quote](https://i.pinimg.com/564x/bf/e1/91/bfe1919a80666b8fdd516da73c10c7cf.jpg) from Leonardo Da Vinci and found [The Floating Point Guide](https://floating-point-gui.de/basic/).
+This is something important to know about when dealing with numbers in JavaScript. After barely reading [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html), I went for my favorite [quote](https://i.pinimg.com/564x/bf/e1/91/bfe1919a80666b8fdd516da73c10c7cf.jpg) from Leonardo Da Vinci and found [The Floating Point Guide](https://floating-point-gui.de/basic/).
 The guide have some basic solutions to how to deal with this:
 
 > - If you really need your results to add up exactly, especially when you work with money: use a special decimal datatype.
