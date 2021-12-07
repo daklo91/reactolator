@@ -35,7 +35,7 @@ The first one is that you can use your Keyboard and the buttons will animate as 
 
 ### Change theme automatically if the user changes the device theme
 
-The second one is that that the theme will change with the device theme as long as the user never touched the "switch theme" button.
+The second hidden feature is that that the theme will change with the device theme as long as the user never touched the "switch theme" button.
 
 ```jsx
 const mql = window.matchMedia("(prefers-color-scheme: dark)");
@@ -105,8 +105,10 @@ I decided to go for the latter because that will make it easier for mobile users
 
 I decided to make the calculations be shown in an extra line above the result number. This is inspired by the official Windows 10 Calculator.  
 The reason for why I did this is to make bigger calculations easier to see.
-![Improved Display](/screenshots/calculator-display.png?raw=true "My improved display compared to the original")<sub>Left is the original design. Middle is Windows 10's official calculator. Right is my tweak to the design.</sub>
+![Improved Display](/screenshots/calculator-display.png?raw=true "My improved display compared to the original")
+<sub>Left is the original design. Middle is Windows 10's official calculator. Right is my tweak to the design.</sub>
 
 ## Other
 
 Found a problem with the code or want to ask a question? Please don't hesitate to create an issue or contact me.
+Frontend Mentor has asked me to not share their design files and I will honor it.
