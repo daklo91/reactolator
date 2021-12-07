@@ -1,6 +1,6 @@
 # Reactolator
 
-A calculator app made with React.
+A calculator app made with React.  
 Live version on Netlify: https://daklo-reactolator.netlify.app/
 
 Table of contents
