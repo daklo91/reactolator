@@ -18,24 +18,24 @@ function App() {
       : "light"
   );
 
+  const mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function changeThemeToDevice(e) {
+    if (e.matches) {
+      setTheme("dark");
+    } else if (!e.matches) {
+      setTheme("light");
+    }
+  }
+
   useEffect(() => {
-    let watchTheme = "";
     if (!localStorage.getItem("theme")) {
-      watchTheme = window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
-          const newTheme = e.matches ? "dark" : "light";
-          setTheme(newTheme);
-        });
-    } else if (watchTheme !== "") {
-      window.removeEventListener("change", watchTheme);
+      mql.addEventListener("change", changeThemeToDevice);
     }
     return () => {
-      if (watchTheme !== "") {
-        window.removeEventListener("change", watchTheme);
-      }
+      mql.removeEventListener("change", changeThemeToDevice);
     };
-  }, []);
+  }, [mql]);
 
   const changeTheme = (themeString) => {
     setTheme(themeString);
