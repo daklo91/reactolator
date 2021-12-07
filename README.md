@@ -58,7 +58,7 @@ useEffect(() => {
 }, [mql]);
 ```
 
-This is done with the "change" event listener, which will be active if the user has no "theme" object in their localStorage. This is one step above the user stories.  
+Whenever the theme toggle is clicked, it will add a "theme" object to the localStorage which will be loaded the next time the user visit. However, if this is never clicked, the code above will run. The code adds a "change" event listener, which will watch if the users preferred theme changes and then run the changeThemeToDevice function. This is one step above the user stories.  
 If you want to test this. You will have to clear the localStorage of Reactolator first and then reload it before playing around with your device theme.
 
 ## Hurdles during development
@@ -68,6 +68,8 @@ No one is perfect. Especially not me. Sometimes the smallest problems can take h
 - Using a function in useEffect before calling it.
 - Not properly removing event listeners (caused bugs with that "hidden feature" of mine).
 - And trying to have the calculation logic in the Display component which is a sibling of the Keyboard component (this doesn't work because I use state pipelines).
+
+And some bigger ones are...
 
 ### Enter keys writes focused elements
 
@@ -107,6 +109,29 @@ I decided to make the calculations be shown in an extra line above the result nu
 The reason for why I did this is to make bigger calculations easier to see.
 ![Improved Display](/screenshots/calculator-display.png?raw=true "My improved display compared to the original")
 <sub>Left is the original design. Middle is Windows 10's official calculator. Right is my tweak to the design.</sub>
+
+### Dealing with the Floating-Point Arithmetic
+
+This is something that everyone should know about when dealing with numbers in JavaScript. After barely reading [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html), I went for my favorite [quote](https://i.pinimg.com/564x/bf/e1/91/bfe1919a80666b8fdd516da73c10c7cf.jpg) from Leonardo Da Vinci and found [The Floating Point Guide](https://floating-point-gui.de/basic/).
+The guide have some basic solutions to how to deal with this:
+
+> - If you really need your results to add up exactly, especially when you work with money: use a special decimal datatype.
+> - If you just don’t want to see all those extra decimal places: simply format your result rounded to a fixed number of decimal places when displaying it.
+> - If you have no decimal datatype available, an alternative is to work with integers, e.g. do money calculations entirely in cents. But this is more work and has some drawbacks.
+
+I went for option number two. But instead of using the suggested ` num.toPrecision(4)` line of code in their JavaScript section, I went for this:
+
+```jsx
+const removeTrailingZeros = () => {
+  const string = props.resultNumber.toFixed(4).toString();
+  return +string;
+};
+```
+
+This is called in the Display components render.
+toFixed() provides the number after the decimal instead of the numbers total length which toPrecision() gives, this is better for a calculator because the result is never a static number length. The code also turns the number into a string before turning it into a number again, this removes the trailing zeros in the case of `0.1 * 0.2` which will give `0.020000000000000004` as the result. Fixing the number to have 4 decimals and then removing the trailing zeroes will give the proper `0.2` as the result number.
+
+Of course, the problem is still there but hidden. If I were to create a calculator for a bank, I would deal with it properly by using [Big Number](http://jsfromhell.com/classes/bignumber) (first option in the guide) or use the third option in the Floating Point Guide.
 
 ## Other
 
