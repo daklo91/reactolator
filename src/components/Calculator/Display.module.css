@@ -9,9 +9,11 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
+  direction: rtl;
 }
 
 .text--result {
+  direction: ltr;
   position: relative;
   top: 16px;
   font-size: 32px;
@@ -21,6 +23,8 @@
 }
 
 .text--calculation {
+  direction: ltr;
+  inline-size: min-content;
   opacity: 0.6;
   display: block;
   position: relative;
