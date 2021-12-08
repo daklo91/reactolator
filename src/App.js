@@ -119,6 +119,23 @@ function App() {
         setResultNumber(+resultNumber / +activeNumber);
       }
     }
+    //Getting DRY. Anyway, this allows for smashing the button to go below 0 if the result is 0
+    if (resultNumber === 0 && recievedSymbol.name === "=") {
+      setdelIsRecieved(false);
+      setSavedNumber(resultNumber);
+      if (operatorSymbol === "+") {
+        setResultNumber(+resultNumber + +activeNumber);
+      }
+      if (operatorSymbol === "-") {
+        setResultNumber(+resultNumber - +activeNumber);
+      }
+      if (operatorSymbol === "x") {
+        setResultNumber(+resultNumber * +activeNumber);
+      }
+      if (operatorSymbol === "/") {
+        setResultNumber(+resultNumber / +activeNumber);
+      }
+    }
     //Do the calculation if there is no resultNumber
     if (recievedSymbol.name === "=" && !resultNumber) {
       setdelIsRecieved(false);
