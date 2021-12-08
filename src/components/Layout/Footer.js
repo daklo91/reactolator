@@ -14,7 +14,7 @@ const Footer = () => {
         </a>
         .<br />
         Coded with &hearts; by{" "}
-        <a href="https://github.com/daklo91" target="_blank" rel="noreferrer">
+        <a href="https://github.com/daklo91/reactolator" target="_blank" rel="noreferrer">
           daklo
         </a>
         .
