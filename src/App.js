@@ -10,6 +10,7 @@ function App() {
   const [resultNumber, setResultNumber] = useState("");
   const [operatorSymbol, setOperatorSymbol] = useState("");
   const [delIsRecieved, setdelIsRecieved] = useState(false);
+  const [readyForNumber, setReadyForNumber] = useState(false);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -71,6 +72,14 @@ function App() {
         });
       }
     }
+    //Set result to savedNumber if there is a result and number is recieved
+    if (readyForNumber && recievedSymbol.type === "number" && !delIsRecieved) {
+      if (recievedSymbol.name === "0") {
+        setActiveNumber("0");
+      }
+      setReadyForNumber(false);
+      setSavedNumber(resultNumber);
+    }
     //*Add operator, set activeNumber to savedNumber
     if (recievedSymbol.type === "operator" && !operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
@@ -78,13 +87,32 @@ function App() {
       setSavedNumber(activeNumber);
     }
     //Switch the operator if an operator is already set
-    if (recievedSymbol.type === "operator" && operatorSymbol) {
+    if (recievedSymbol.type === "operator" && resultNumber) {
+      setReadyForNumber(false);
       setOperatorSymbol(recievedSymbol.name);
       if (resultNumber) {
         setSavedNumber(resultNumber);
         setActiveNumber("0");
       }
       setResultNumber("");
+    }
+    //Calculate the numbers and make ready for new input
+    if (recievedSymbol.type === "operator" && !resultNumber && operatorSymbol) {
+      setReadyForNumber(false);
+      setOperatorSymbol(recievedSymbol.name);
+      if (operatorSymbol === "+") {
+        setSavedNumber(+savedNumber + +activeNumber);
+      }
+      if (operatorSymbol === "-") {
+        setSavedNumber(+savedNumber - +activeNumber);
+      }
+      if (operatorSymbol === "x") {
+        setSavedNumber(+savedNumber * +activeNumber);
+      }
+      if (operatorSymbol === "/") {
+        setSavedNumber(+savedNumber / +activeNumber);
+      }
+      setActiveNumber("0");
     }
     //*Remove a symbol from activeNumber
     if (recievedSymbol.name === "DEL") {
@@ -94,6 +122,7 @@ function App() {
       if (!delIsRecieved) {
         setdelIsRecieved(true);
       }
+      setReadyForNumber(true);
       setResultNumber("");
     }
     if (recievedSymbol.name === "RESET") {
@@ -138,6 +167,7 @@ function App() {
     }
     //Do the calculation if there is no resultNumber
     if (recievedSymbol.name === "=" && !resultNumber) {
+      setReadyForNumber(true);
       setdelIsRecieved(false);
       if (operatorSymbol === "+") {
         setResultNumber(+savedNumber + +activeNumber);
