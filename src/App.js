@@ -9,8 +9,8 @@ function App() {
   const [savedNumber, setSavedNumber] = useState("");
   const [resultNumber, setResultNumber] = useState("");
   const [operatorSymbol, setOperatorSymbol] = useState("");
-  const [delIsRecieved, setdelIsRecieved] = useState(false);
-  const [readyForNumber, setReadyForNumber] = useState(false);
+  const [delIsRecieved, setdelIsRecieved] = useState(false); //Protects from removing a number from active number if result number is present
+  const [readyForNumber, setReadyForNumber] = useState(false); //When true, the result number will become savednumber on a recieved number type
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme")
@@ -19,8 +19,8 @@ function App() {
       : "light"
   );
 
+  // will check if mql matches the device theme and change it accordingly
   const mql = window.matchMedia("(prefers-color-scheme: dark)");
-
   function changeThemeToDevice(e) {
     if (e.matches) {
       setTheme("dark");
@@ -28,7 +28,6 @@ function App() {
       setTheme("light");
     }
   }
-
   useEffect(() => {
     if (!localStorage.getItem("theme")) {
       mql.addEventListener("change", changeThemeToDevice);
@@ -37,6 +36,8 @@ function App() {
       mql.removeEventListener("change", changeThemeToDevice);
     };
   }, [mql]);
+
+  //-----------
 
   const changeTheme = (themeString) => {
     setTheme(themeString);
@@ -47,7 +48,16 @@ function App() {
     calculate(recievedSymbol);
   };
 
+  //* The calculate function does different things depending on the recievedsymbols type or name.
   const calculate = (recievedSymbol) => {
+    //if savedNumber === infinity, reset calculator
+    if (!isFinite(savedNumber)) {
+      setResultNumber("");
+      setActiveNumber("");
+      setSavedNumber("");
+      setOperatorSymbol("");
+      return;
+    }
     //*Add number to activeNumber
     if (recievedSymbol.type === "number") {
       if (resultNumber) {
@@ -80,7 +90,7 @@ function App() {
       setReadyForNumber(false);
       setSavedNumber(resultNumber);
     }
-    //*Add operator, set activeNumber to savedNumber
+    //Add operator, set activeNumber to savedNumber
     if (recievedSymbol.type === "operator" && !operatorSymbol) {
       setOperatorSymbol(recievedSymbol.name);
       setActiveNumber("0");
@@ -100,23 +110,26 @@ function App() {
     if (recievedSymbol.type === "operator" && !resultNumber && operatorSymbol) {
       setReadyForNumber(false);
       setOperatorSymbol(recievedSymbol.name);
-      if (operatorSymbol === "+") {
+      if (operatorSymbol === "+" && recievedSymbol.name === "+") {
         setSavedNumber(+savedNumber + +activeNumber);
       }
-      if (operatorSymbol === "-") {
+      if (operatorSymbol === "-" && recievedSymbol.name === "-") {
         setSavedNumber(+savedNumber - +activeNumber);
       }
-      if (operatorSymbol === "x") {
+      if (operatorSymbol === "x" && recievedSymbol.name === "x") {
         setSavedNumber(+savedNumber * +activeNumber);
       }
-      if (operatorSymbol === "/") {
+      if (operatorSymbol === "/" && recievedSymbol.name === "/") {
         setSavedNumber(+savedNumber / +activeNumber);
       }
-      setActiveNumber("0");
+      if (operatorSymbol === recievedSymbol.name) {
+        setActiveNumber("0");
+      }
     }
     //*Remove a symbol from activeNumber
     if (recievedSymbol.name === "DEL") {
       if (delIsRecieved) {
+        //simply removes the last digit
         setActiveNumber(Math.floor(activeNumber / 10).toString());
       }
       if (!delIsRecieved) {
@@ -148,7 +161,7 @@ function App() {
         setResultNumber(+resultNumber / +activeNumber);
       }
     }
-    //Getting DRY. Anyway, this allows for smashing the button to go below 0 if the result is 0
+    //This allows for smashing the button to go below 0 if the result is 0
     if (resultNumber === 0 && recievedSymbol.name === "=") {
       setdelIsRecieved(false);
       setSavedNumber(resultNumber);

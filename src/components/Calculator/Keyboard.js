@@ -23,7 +23,7 @@ const symbols = [
 ];
 
 const Keyboard = (props) => {
-  const [keyPress, setKeyPress] = useState("");
+  const [keyPress, setKeyPress] = useState(""); //<-- only for adding a class that animates the button
   const [keyIsHeld, setkeyIsHeld] = useState(false);
 
   const keyPressed = (e) => {

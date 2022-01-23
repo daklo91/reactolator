@@ -4,6 +4,7 @@ import classes from "./Header.module.css";
 const Header = (props) => {
   const [switchTheme, setSwitchTheme] = useState(1);
 
+  // two-way binds the knob and theme setting
   useEffect(() => {
     if (props.theme === "dark") {
       setSwitchTheme(1);
